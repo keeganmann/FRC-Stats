@@ -1,0 +1,263 @@
+/* 
+    This is the main stylesheet for the webpage.
+*/
+
+body
+{
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    text-align:center;
+    background: #dddddd;
+    padding: 10px;
+    /*background: #4488bb url('/graphics/vmotbl2.png') repeat scroll left top;*/
+}
+div{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* 
+   Header 
+*/
+div.header
+{
+    text-align: center;
+    background: #4488bb url('/graphics/head3.jpg') repeat-x scroll left top;
+    width:640px;
+    height:70px;
+    border: 1px solid black;
+    border-bottom-style: none;
+}
+
+h1.maintitle{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:20px;
+    vertical-align:middle;
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    height: 100%;
+}
+div.logout{
+    padding: 5px;
+    float: left;
+    color: #ffffff;
+    top:0px;
+    left:0px;
+}
+div.logout:hover{
+    /*background: #ffffff;*/
+}
+div.logout a{
+    color: #ffffff;
+}
+div.logout:hover a{
+    color: #ff0000;
+}
+
+/* 
+   Navigation Bar
+*/
+div.navbar
+{
+    font-family: Helvetica, sans-serif;
+    font-size: 15px;
+    background: #4488bb url('/graphics/head3.jpg') repeat-x scroll left bottom;
+    border: 1px solid black;
+    border-bottom-style: none;
+    border-top-style: none;
+    width:630px;
+    height:30px;
+    color: #ffffff;
+    padding:0;
+    border-bottom: 3px solid #0000aa;
+    padding-left:10px;
+}
+div.navbar a
+{
+    text-decoration:none;
+    color: #ffffff;
+}
+div.navpadder
+{
+    padding:5px 10px;
+    margin:3px;
+    margin-right: 10px;
+    float: left;
+    height: 20px;
+}
+div.navpadder:hover, #sel
+{
+    background:#ffffff;
+    border-top: 3px solid #0000aa;
+    border-left: 3px solid #0000aa;
+    border-right: 3px solid #0000aa;
+    margin:0px;
+    margin-right: 7px;
+}
+div.navpadder:hover a, #sel a
+{
+    text-decoration:none;
+    color: #0000aa;
+}
+#sel a
+{
+    color: #dd0000;
+    /*font-weight: bold;*/
+}
+div.indent
+{
+    padding:0px 10px;
+    margin:0px;
+}
+
+/* 
+   Content Area 
+*/
+div.content
+{
+    color: #555555;
+    border: 1px solid black;
+    border-bottom-style: none;
+    border-top-style: none;
+    width: 640px;
+    background: #ffffff;
+}
+div.navleft
+{
+    float: right;
+    border-left: 1px solid #bbbbbb;
+    width: 200px;
+    height: 100%;
+    margin-left: 10px;
+    background: #eeeeee;
+}
+div.padder
+{
+    padding:15px;
+    margin:0px;
+}
+
+/*
+   Content Styles
+*/
+p
+{
+    padding:0;
+    padding-bottom:10px;
+    margin:0;
+}
+li
+{
+    padding-bottom:10px;
+}
+div.content h1
+{
+    font-size: x-large;
+    color: #000000;
+}
+h2
+{
+    font-size: large;
+    color: #000000;
+}
+a
+{
+    text-decoration:none;
+    color: #0000ff;
+}
+a:hover
+{
+    text-decoration:none;
+    color: #ff0000;
+}
+
+/*
+   Table
+*/
+
+table
+{
+    color: #000000;
+    padding: 0px;
+    padding-bottom: 0;
+    border: 1px solid black;
+    width: 100%;
+}
+table td
+{
+    padding: 4px;
+    border:0;
+}
+table td.grey
+{
+    background: #bbbbbb;
+}
+table td.red
+{
+    background: #ff8888;
+}
+table td.blue
+{
+    background: #8888ff;
+}
+table td.stats
+{
+    font-size: 12px;
+    background: #cccccc;
+    padding-bottom: 1px;
+    padding-top: 1px;
+}
+table td.narrow
+{
+    font-size: 12px;
+    background: #cccccc;
+    padding-bottom: 1px;
+    padding-top: 1px;
+}
+table td.stats2
+{
+    font-size: 12px;
+    background: #aaccaa;
+    padding-bottom: 1px;
+    padding-top: 1px;
+}
+input.matchentry
+{
+    width: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+input.fullwidth
+{
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+}
+td.fullwidth
+{
+    padding: 0px;
+    text-align: center;
+}
+.fineprint
+{
+    font-size: 7px;
+}
+
+/* 
+   Footer 
+*/
+div.footer
+{
+    color: #888888;
+    border: 1px solid black;
+    border-top: 1px solid #bbbbbb;
+    width: 640px;
+    height: 50px;
+    background: #ffffff;
+    text-align: center;
+    color: #bbbbbb;
+    font-size: x-small;
+}
