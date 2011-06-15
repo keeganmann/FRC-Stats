@@ -72,9 +72,9 @@ $teamdata = $data->getTeamData($teamnumber);
         <td width="220px">
             <?php
             $pics = new RobotPics();
-            if ($path = $pics->getRobotPicPath($teamnumber)) {
+            if ($path = $pics->getRobotThumbPath($teamnumber)) {
                 ?>
-                <img src="getthumbnail.php?w=220&s=<?php echo $path ?>" height="220px" />
+                <img src="<?php echo $path ?>" height="220px" />
                 <?php
             } else {
                 echo "<table height='100%'><tr><td><center>NO PICTURE</center></td></tr></table>";

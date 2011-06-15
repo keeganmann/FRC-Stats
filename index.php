@@ -119,6 +119,11 @@ require_authentication();
                         the process of alliance selection for the finals.  It can also be used to record 
                         responses to surveys.
                     </p>
+                    <h2>Code</h2>
+                    <p>
+                        The code for this project is now available through an SVN repository as part of the google code project here:
+                        <a href="http://code.google.com/p/frcstats/">http://code.google.com/p/frcstats/</a>.
+                    </p>
                     <h2>Operation</h2>
                     <ul>
                         <li>To start, click "Matches" above and enter all the matches for the competition.  
@@ -136,7 +141,6 @@ require_authentication();
                         <li>Accounts can now be managed under "Settings". </li>
                     </ul>
                     <h2>Needed Features</h2>
-                    <p><strong>This is the only place where we are keeping track of major new features we need.</strong></p>
                     <p>Note: this list does not include various small fixes.  This is a list of major new features.</p>
                     <ul>
                         <li>Configuration header -- database login information.</li>
@@ -158,8 +162,6 @@ require_authentication();
                             interesting ones.</li>
                         <li>Upload the website code to an svn server for future development.</li>
                         <li>There is a twitter feed which sends out real time data on which matches are coming up. Synch with this?</li>
-                        <li>Currently images are scaled down each time the small version is requested (in the team stats display).
-                            This should really be cached to increase speed.</li>
                     </ul>
                     <h2>Further Questions</h2>
                     <p>Should we deploy this site to the same server as our nurdrobotics.com site, or should we deploy it on 

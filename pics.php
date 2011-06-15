@@ -6,18 +6,22 @@
  */
 
 include("robotpics.php");
+include("thumbgen.php");
 $pics = new RobotPics();
 
 if ($_GET['update'] == "pic") {
-    $target_path = "robopics/";
+    $target_dir = "robopics/";
 
     //$target_path = $target_path . basename($_FILES['uploadedfile']['name']);
-    $target_path .= "robo" . $_POST["teamnumber"] . "." .
+    $target_name = "robo" . $_POST["teamnumber"] . "." .
             pathinfo($_FILES['uploadedfile']['name'], PATHINFO_EXTENSION);
+    $target_path = $target_dir . $target_name;
     if ($result = move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
         echo "<p>The file " . basename($_FILES['uploadedfile']['name']) .
         " has been uploaded to <a href='$target_path'>$target_path</a>!</p>";
         echo "<p class='fineprint'>" . $pics->addRobotPicPath($_POST["teamnumber"], $target_path) . "</p>";
+        createthumb($target_path, $target_dir . "220x220_" . $target_name, 220, 220);
+        createthumb($target_path, $target_dir . "100x100_" . $target_name, 100, 100);
     } else {
         echo "<p>There was an error uploading the file, please try again!  " .
         $_FILES["uploadedfile"]["error"] . "</p>";
