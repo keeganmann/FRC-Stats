@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 /*
  * Class used to manage match performance data.
  */
@@ -39,8 +40,7 @@ class MatchPerformance {
     public function update($matchnumber) {
         $this->table = array();
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //get match query
         $result = mysql_query("SELECT * FROM Performance WHERE matchnumber=" . $matchnumber);
         //get the row representing each match
@@ -58,8 +58,7 @@ class MatchPerformance {
     public function clearData($matchnumber) {
         $this->table = array();
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //get match query
         $result = mysql_query("DELETE FROM Performance WHERE matchnumber=" . $matchnumber);
         mysql_close($con);
@@ -74,8 +73,7 @@ class MatchPerformance {
 
     public function addMatch($matchnumber, $match) {
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //delete any existing matches with this match number
         mysql_query("DELETE FROM Performance WHERE matchnumber=" . $matchnumber .
                 " AND teamnumber=" . $match["teamnumber"]);

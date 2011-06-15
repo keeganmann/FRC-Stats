@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 /*
  * Class used to manage the robot picture database.
  */
@@ -6,8 +7,7 @@ class RobotPics {
 
     public function getRobotPicPath($teamnumber) {
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //get match query
         $result = mysql_query("SELECT * FROM Robopics WHERE teamnumber=" . $teamnumber);
         //get the row representing each match
@@ -18,8 +18,7 @@ class RobotPics {
     }
     public function getRobotThumbPath($teamnumber) {
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //get match query
         $result = mysql_query("SELECT * FROM Robopics WHERE teamnumber=" . $teamnumber);
         //get the row representing each match
@@ -33,8 +32,7 @@ class RobotPics {
     }
     public function addRobotPicPath($teamnumber, $path) {
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //delete existing
         $result = mysql_query("DELETE FROM Robopics WHERE teamnumber=" . $teamnumber);
         //get match query

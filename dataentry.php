@@ -1,8 +1,8 @@
 <!--Included by index.php-->
 
 <?php
-include("matches.php");
-include("matchperformance.php");
+require("matches.php");
+require("matchperformance.php");
 $matchnumber = $_GET["matchnumber"];
 if ($_GET["update"] == "true") {
     $performance = new MatchPerformance();

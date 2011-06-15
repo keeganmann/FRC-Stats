@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 /*
  * Used to manage survey response data.
  */
@@ -12,7 +13,7 @@ class SurveyResponses {
     function __construct() {
         $this->columns = array();
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
+        $con = mysql_connect(frcgetsqlserverurl(), frcgetsqlusername(), frcgetsqlpassword());
         mysql_select_db("information_schema", $con);
         //get match query
         $result = mysql_query("SELECT * FROM COLUMNS WHERE TABLE_NAME='SurveyResponses'");
@@ -35,8 +36,7 @@ class SurveyResponses {
     }
 
     function addResponse($response) {
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         mysql_query("DELETE FROM SurveyResponses WHERE teamnumber=" . $response['teamnumber']);
         $query = "INSERT INTO SurveyResponses VALUES (";
         $delimeter = "";
@@ -51,8 +51,7 @@ class SurveyResponses {
     }
 
     function getResponse($teamnumber) {
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         $query = "SELECT * FROM SurveyResponses WHERE teamnumber=" . $teamnumber;
         $result = mysql_query($query);
         while ($row = mysql_fetch_array($result)) {

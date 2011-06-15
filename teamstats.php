@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 include("matchperformance.php");
 
 /*
@@ -18,8 +19,7 @@ class TeamStats {
     public function getStats($teamnumber) {
         $stats = array();
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //get match query
         $result = mysql_query("SELECT * FROM Performance WHERE teamnumber=" . $teamnumber);
         //get the row representing each match

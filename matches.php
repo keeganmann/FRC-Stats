@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 /*
  * This class is used to manage the list of matches.
  */
@@ -13,8 +14,7 @@ class Matches {
     public function update() {
         $this->table = array();
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //get match query
         $result = mysql_query("SELECT * FROM Matches ORDER BY matchnumber");
         //get the row representing each match
@@ -31,8 +31,7 @@ class Matches {
     public function matchesForTeam($teamnumber) {
         $this->table = array();
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //get match query
         $result = mysql_query("SELECT * FROM Matches WHERE team1=$teamnumber OR team2=$teamnumber OR team3=$teamnumber OR team4=$teamnumber OR team5=$teamnumber OR team6=$teamnumber ORDER BY matchnumber");
         //get the row representing each match
@@ -53,8 +52,7 @@ class Matches {
 
     public function getMatch($matchnumber) {
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //get match query
         $result = mysql_query("SELECT * FROM Matches WHERE matchnumber=" . $matchnumber);
         //get the row representing the match
@@ -66,8 +64,7 @@ class Matches {
 
     public function addMatch($matchnumber, $match) {
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //delete any existing matches with this match number
         mysql_query("DELETE FROM Matches WHERE matchnumber=" . $matchnumber);
         //generate query
@@ -87,8 +84,7 @@ class Matches {
     
     public function addScore($matchnumber, $redscore, $bluescore){
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         //send query
         mysql_query($query = "UPDATE Matches SET bluescore=" . $bluescore . 
                     ", redscore=" . $redscore .

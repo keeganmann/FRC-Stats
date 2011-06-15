@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 /*
  * This class is used to manipulate the list of user accounts stored in the sql
  * database.
@@ -9,8 +10,7 @@ class Accounts {
     public $columns = array('username', 'password', 'firstname', 'lastname', 'email', 'permissions');
 
     public function getAccountTable() {
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         $query = "SELECT * FROM Accounts";
         $result = mysql_query($query);
         $out = array();
@@ -24,8 +24,7 @@ class Accounts {
     }
 
     public function getAccount($username) {
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         $query = "SELECT * FROM Accounts WHERE username='$username'";
         $result = mysql_query($query);
         $out = array();
@@ -38,16 +37,14 @@ class Accounts {
     }
     public function deleteAccount($username){
         //TODO add a protection against deleting the root user.
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         $query = "DELETE FROM Accounts WHERE username='$username'";
         $result = mysql_query($query);
         mysql_close();
         return $out;
     }
     public function addAccount($account){
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         mysql_query("DELETE FROM Accounts WHERE username='" . $account['username'] . "'");
         $query = "INSERT INTO Accounts VALUES (";
         $delimeter = "";
@@ -61,8 +58,7 @@ class Accounts {
         return $query;
     }
     public function updateAccount($account){
-        $con = mysql_connect("localhost", "root", "nageek5tree");
-        mysql_select_db("frc_stats_2011", $con);
+        $con = frcmysqlconnect();
         $query = "UPDATE Accounts SET ";
         $delimeter = "";
         foreach($account as $index=>$column){
