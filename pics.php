@@ -2,7 +2,7 @@
 <?php
 /*
  * Used for uploading robot pictures and survey responses.
- * TODO: rename to settings.php and update required includes/links/form actins.
+ * TODO: rename to teaminfo.php and update required includes/links/form actins.
  */
 
 include("robotpics.php");

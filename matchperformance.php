@@ -14,10 +14,10 @@ class MatchPerformance {
     function __construct() {
         $this->columns = array();
         //connect to database
-        $con = mysql_connect("localhost", "root", "nageek5tree");
+        $con = mysql_connect(frcgetsqlserverurl(), frcgetsqlusername(), frcgetsqlpassword());
         mysql_select_db("information_schema", $con);
         //get match query
-        $result = mysql_query("SELECT * FROM COLUMNS WHERE TABLE_NAME='Performance'");
+        $result = mysql_query("SELECT * FROM COLUMNS WHERE TABLE_NAME='Performance' AND TABLE_SCHEMA='" . frcgetsqldatabase() . "'");
         //get the row representing each match
         while ($row = mysql_fetch_array($result)) {
             //get the entries

@@ -6,6 +6,12 @@
  * wants to view.  
  */
 
+//check installed
+require_once 'config.php';
+if (!frcgetinstalled()) {
+    header("Location:install.php");
+    exit();
+}
 //Secure this page
 require("common.php");
 require_authentication();

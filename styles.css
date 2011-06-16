@@ -261,3 +261,13 @@ div.footer
     color: #bbbbbb;
     font-size: x-small;
 }
+/* UNCOMMENT THIS FOR A COOL BACKGROUND
+body {
+    background-color: #b6b6b6;
+    background-color: #000000;
+    background-attachment: fixed;
+    background-image: url('graphics/tilestars.jpg');
+    background-repeat:repeat;
+    color: #b6b6b6;
+}
+*/
