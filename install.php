@@ -29,7 +29,15 @@
     </head>
     <body>
         <?php
-        if ($_POST['username'] != "") {
+        include('config.php');
+        if(frcgetinstalled()){
+            ?>
+            <h1 style="color: #ff0000;">ERROR: SYSTEM ALREADY INSTALLED</h1>
+            <A href="index.php">Click here to continue</a>
+            <?php
+        }
+        else if ($_POST['username'] != "") {
+            echo "installing...";
             //set database login info in config.php
             $file = fopen("config.php", "a");
             fwrite($file, "<?php\n");
@@ -40,14 +48,16 @@
             fwrite($file, "\$frcinstalled = TRUE;\n");
             fwrite($file, "?>\n");
             fclose($file);
-            include("config.php");
-            $con = frcmysqlconnect();
+            echo "connecting...";
+            $con = mysql_connect($_POST[serverurl], $_POST[username], $_POST[password]);
             if (!$con)
                 die("ERROR: COULD NOT CONNECT TO DATABASE");
             //create the database
+            echo "create database...";
             mysql_query("CREATE DATABASE " . $_POST[database]);
             mysql_select_db($_POST[database], $con);
             //create the tables
+            echo "create tables...";
             mysql_query("
                 CREATE TABLE Accounts
                 (
@@ -99,6 +109,7 @@
                 rookieyear int(4)
                 )");
             //create root account
+            echo "adding root user...";
             mysql_query("
                 INSERT INTO Accounts 
                 VALUES ('root', '" . md5($_POST['rootpass']) . "', NULL, NULL, NULL, 'admin')");

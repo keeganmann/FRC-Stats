@@ -221,3 +221,7 @@ if ($_SESSION['permissions'] == 'admin') {
     <?php
 }
 ?>
+
+<hr/>
+<h2>Reinstall</h2>
+<a href="reinstall.php">Reinstall Now</a>
