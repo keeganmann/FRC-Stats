@@ -1,6 +1,9 @@
 <!--Included by index.php-->
 
 <?php
+//Secure this page
+require_once 'common.php';
+require_authentication();
 require("matches.php");
 require("matchperformance.php");
 $matchnumber = $_GET["matchnumber"];
@@ -8,15 +11,17 @@ if ($_GET["update"] == "true") {
     $performance = new MatchPerformance();
     for ($i = 0; $i < sizeof($performance->columns); $i++) {
         if ($performance->controltypes[$i] == "checkbox")
-            $match[$performance->columns[$i]] = (int)($_POST[$performance->columns[$i]] != "");
+            $match[$performance->columns[$i]] = (int) ($_POST[$performance->columns[$i]] != "");
         else
             $match[$performance->columns[$i]] = $_POST[$performance->columns[$i]];
     }
     echo "<p class=fineprint>" . $performance->addMatch($matchnumber, $match) . "</p>";
-}
-else if ($_GET["update"] == "clear") {
+} else if ($_GET["update"] == "clear") {
     $performance = new MatchPerformance();
     $performance->clearData($matchnumber);
+} else if ($_GET["update"] == "clearall") {
+    $performance = new MatchPerformance();
+    $performance->clearAllData();
 } else if ($_GET["update"] == "score") {
     $matches = new Matches();
     echo "<p class=fineprint>" .
@@ -118,9 +123,14 @@ if ($matchnumber != "") {
         <input type="submit" value="Clear" /> (Clear performance data for this match)
     </form>
     <?php
-    //TODO add a "clear all performance data" button
 }
 ?>
+<br/><br/>
+<form action="index.php" method="get">
+    <input type="hidden" name="n" value="dataentry" />
+    <input type="hidden" name="update" value="clearall" />
+    <input type="submit" value="Clear All" /> (Clear performance data for all matches)
+</form>
 
 <!-- code to set the default input focus -->
 <script>

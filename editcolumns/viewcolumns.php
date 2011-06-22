@@ -1,4 +1,8 @@
 <?php
+//Secure this page
+require_once '../common.php';
+require_authentication();
+
 require_once '../config.php';
 $tablename = $_GET['table'];
 $locknumber = $_GET['lock'];

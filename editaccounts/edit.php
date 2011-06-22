@@ -1,4 +1,8 @@
 <?php
+//Secure this page
+require_once '../common.php';
+require_authentication();
+
 include('../accounts.php');
 $username = $_GET['username'];
 $accounts = new Accounts();

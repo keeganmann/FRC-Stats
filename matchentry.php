@@ -8,6 +8,9 @@
     TODO: Automate this process-fetch data from somewhere.
 </p>
 <?php
+//Secure this page
+require_once 'common.php';
+require_authentication();
 //TODO: Automate the match entry process.
 include("matches.php");
 if ($_POST["matchnumber"] != "") {

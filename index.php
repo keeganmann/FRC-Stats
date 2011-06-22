@@ -29,38 +29,68 @@ require_authentication();
         <?php
     }
     $currentNav = $_GET["n"];
-    //TODO:  convert this to an array - easier to maintain
-    if ($currentNav == "dataentry")
-        $title = "Performance Data";
-    else if ($currentNav == "teams")
-        $title = "Team Stats";
-    else if ($currentNav == "pics")
-        $title = "Team Information";
-    else if ($currentNav == "summary")
-        $title = "Upcoming Matches";
-    else if ($currentNav == "matchentry")
-        $title = "Match Data";
-    else if ($currentNav == "settings")
-        $title = "Settings";
-    else {
+    if (!$currentNav)
         $currentNav = "main";
-    }
-    if ($currentNav == "main")
-        $title = "Main Page";
+    $navtitles = array(
+        "dataentry" => "Performance Data",
+        "teams" => "Team Stats",
+        "pics" => "Team Information",
+        "summary" => "Upcoming Matches",
+        "matchentry" => "Match Data",
+        "settings" => "Settings",
+        "main" => "Main Page"
+    );
+    $navpages = array(
+        "dataentry" => "dataentry.php",
+        "teams" => "teams.php",
+        "pics" => "teaminfo.php",
+        "summary" => "mymatches.php",
+        "matchentry" => "matchentry.php",
+        "settings" => "settings.php",
+        "main" => "none"
+    );
+    $navlinks = array(
+        "main" => "Home",
+        "matchentry" => "Matches",
+        "dataentry" => "Performance",
+        "teams" => "Stats",
+        "summary" => "Upcoming",
+        "pics" => "TeamInfo",
+        "settings" => "Settings"
+    );
+    $title = $navtitles[$currentNav];
     ?>
     <head>
         <title>FRC STATS - <?php echo $title ?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" href="styles.css" />
         <link rel="shortcut icon" href="favicon.ico" />
+        <?php
+        // ADD ADDITIONAL EVENTS TO COUNT 
+        // DOWN TO IN THE FUTURE BELOW
+        $events = array(
+            "Kickoff 2012" => "January 7, 2012",
+            "Ship Date 2012" => "February 21, 2012",
+            "Kickoff 2013" => "January 5, 2013",
+            "Ship Date 2013" => "February 19, 2013"
+        );
+        $t = time();
+        $eventdate = "";
+        $eventname = "";
+        foreach ($events as $name => $event) {
+            $t2 = strtotime($event);
+            if ($t2 > $t) {
+                $eventdate = $event;
+                $eventname = $name;
+                break;
+            }
+        }
+        ?>
         <script type="text/javascript">
             function updateClock(){
-                /* 
-                 * TODO  Use a list of future dates for the countdown from a sql database or php array.
-                 */
-                var event = "Kickoff 2012";
+                var event = "<?php echo $eventname; ?>";
                 var currentTime = new Date ( );
-                var targetDate = new Date("January 7, 2012");
+                var targetDate = new Date("<?php echo $eventdate; ?>");
                 var diff = targetDate.getTime() - currentTime.getTime();
                 var days = Math.floor(diff / 1000 / 60 / 60 / 24);
                 var hours = Math.floor(diff / 1000 / 60 / 60) - days * 24;
@@ -79,27 +109,17 @@ require_authentication();
         </div>
 
         <div class="navbar">
-            <div class="navpadder" <?php if ($currentNav == "main")
-        echo "id=sel" ?>>
-                <a href="index.php?n=main">Home</a></div>  
-            <div class="navpadder" <?php if ($currentNav == "matchentry")
-                 echo "id=sel" ?>>
-                <a href="index.php?n=matchentry">Matches</a></div>  
-            <div class="navpadder" <?php if ($currentNav == "dataentry")
-                 echo "id=sel" ?>>
-                <a href="index.php?n=dataentry">Performance</a></div>  
-            <div class="navpadder" <?php if ($currentNav == "teams")
-                 echo "id=sel" ?>>
-                <a href="index.php?n=teams">Stats</a></div>  
-            <div class="navpadder" <?php if ($currentNav == "summary")
-                 echo "id=sel" ?>>
-                <a href="index.php?n=summary">Upcoming</a></div>
-            <div class="navpadder" <?php if ($currentNav == "pics")
-                 echo "id=sel" ?>>
-                <a href="index.php?n=pics">TeamInfo</a></div>
-            <div class="navpadder" <?php if ($currentNav == "settings")
-                 echo "id=sel" ?>>
-                <a href="index.php?n=settings">Settings</a></div>
+            <?php
+            foreach ($navlinks as $index => $label) {
+                echo '<div class="navpadder"';
+                if ($currentNav == $index)
+                    echo "id=sel";
+                echo ">";
+                echo "<a href='index.php?n=$index'>";
+                echo $label;
+                echo '</a></div>';
+            }
+            ?>
         </div>
 
         <div class="content">
@@ -116,6 +136,9 @@ require_authentication();
                 <?php
                 if ($currentNav == "main") {
                     ?>
+                    <p>
+                        <strong>Logged in as <?php echo $_SESSION[username]; ?>.</strong>
+                    </p>
                     <p>
                         This is a database of statistics for <a href="http://www.usfirst.org">FIRST Robotics Competition</a> teams.  
                         We are team #3255, and our main website is located at: <a href=""http://www.nurdrobotics.com/">www.nurdrobotics.com</a>.
@@ -149,24 +172,17 @@ require_authentication();
                     <h2>Needed Features</h2>
                     <p>Note: this list does not include various small fixes.  This is a list of major new features.</p>
                     <ul>
-                        <li>Configuration header -- database login information.</li>
-                        <li>An install file would make the system much easier to set up.  Currently, it is necessary to create the 
-                            database tables manually using phpmyadmin when setting it up on a new server.  Might necessitate a
-                            global settings class</li>
+                        <li>?</li>
                     </ul>
                     <h2>These Features would be Nice</h2>
                     <p>Note: this list does not include various small fixes.  This is a list of major new features.</p>
                     <ul>
                         <li>Time column in match lists. </li>
-                        <li>Would it be too difficult to log penalties for individual teams. </li>
-                        <li>A simple CMS: I'm running out of room for more entries on the top navigation bar 
-                            and might need to add another level if I want to extend the system further or if someone wants to add a 
-                            significant amount of documentation.  The layout for a sidebar has already been developed but I'm 
-                            realizing that a real CMS would be necessary to manage it.</li>
+                        <li>Would it be too difficult to log penalties for individual teams? </li>
+                        <li>A simple CMS.</li>
                         <li>Logging of Penalty and Surrogate information for matches in order to determine real time standing.</li>
                         <li>It might also be useful to log comments for individual matches in case we want to look back on 
                             interesting ones.</li>
-                        <li>Upload the website code to an svn server for future development.</li>
                         <li>There is a twitter feed which sends out real time data on which matches are coming up. Synch with this?</li>
                     </ul>
                     <h2>Further Questions</h2>
@@ -191,29 +207,18 @@ require_authentication();
                         Is the fixed-width layout working or should we change it.  Should it fill the whole screen or be wider?
                     </p>
                     <?php
-                    //TODO:  convert the following else ifs to an array - easier to maintain
-                } else if ($currentNav == "dataentry") {
-                    include("dataentry.php");
-                } else if ($currentNav == "matchentry") {
-                    include("matchentry.php");
-                } else if ($currentNav == "teams") {
-                    include("teams.php");
-                } else if ($currentNav == "summary") {
-                    include("mymatches.php");
-                } else if ($currentNav == "pics") {
-                    include("pics.php");
-                } else if ($currentNav == "settings") {
-                    include("settings.php");
+                } else {
+                    include($navpages[$currentNav]);
                 }
                 ?>
             </div>
         </div>
         <div class="footer">
-            <div class="padder" style="text-align: center">
-                <a href="http://www.nurdrobotics.com/">www.nurdrobotics.com</a>
-                <br/>
-                powered by Apache
-            </div>
+            <a href="http://www.nurdrobotics.com/">www.nurdrobotics.com</a>
+            <br/>
+            powered by Apache, PHP, MySql, and Ubuntu Server
+            <br/>
+            Code licensed under <a href="http://www.gnu.org/licenses/gpl.html">GNU GPL v3.0</a>
         </div>
     </body>
 </html>

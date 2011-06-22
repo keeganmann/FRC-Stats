@@ -255,11 +255,13 @@ div.footer
     border: 1px solid black;
     border-top: 1px solid #bbbbbb;
     width: 640px;
-    height: 50px;
+    height: auto;
     background: #ffffff;
     text-align: center;
     color: #bbbbbb;
     font-size: x-small;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 /* UNCOMMENT THIS FOR A COOL BACKGROUND
 body {

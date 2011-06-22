@@ -1,4 +1,9 @@
 <?php
+
+//Secure this page
+require_once '../common.php';
+require_authentication();
+
 $username = $_GET['username'];
 echo "<p>Changing password for user $username.</p>"
 ?>

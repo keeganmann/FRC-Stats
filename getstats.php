@@ -1,4 +1,7 @@
 <?php
+//Secure this page
+require_once 'common.php';
+require_authentication();
 /*
  * Displays a small box containing a team's data.
  * Intended to be contained within another page using ajax though php includes 

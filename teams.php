@@ -1,6 +1,10 @@
 <!--Included by index.php-->
 <!--Used to view general team data returned by "getstats.php"-->
-
+<?php
+//Secure this page
+require_once 'common.php';
+require_authentication();
+?>
 <script type="text/javascript">
     function updateStats(str)
     {   

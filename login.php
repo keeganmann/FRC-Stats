@@ -94,6 +94,27 @@ $_SESSION[challenge] = $challenge;
                 font-size: 12px;
                 color: #707070;
             }
+            div.loginfooter{
+                color: #888888;
+                font-size: small;
+                text-align: center;
+                border: 1px none black;
+                position: fixed;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                width: 100%;
+                height: auto;
+                bottom: 0px;
+            }
+            div.loginfooter a{
+                color: #888888;
+            }
+            div.loginfooter a:hover{
+                color: #0000ff;
+            }
+            input{
+                width:150px;
+            }
         </STYLE>
         <link rel="shortcut icon" href="favicon.ico" />
         <script type="text/javascript" src="http://pajhome.org.uk/crypt/md5/md5.js"></script>
@@ -119,6 +140,13 @@ $_SESSION[challenge] = $challenge;
         </script> 
     </head>
     <body>
+        <div class="loginfooter" style="text-align: center">
+            <a href="http://www.nurdrobotics.com/">www.nurdrobotics.com</a>
+            <br/>
+            powered by Apache, PHP, MySql, and Ubuntu Server
+            <br/>
+            Code licensed under <a href="http://www.gnu.org/licenses/gpl.html">GNU GPL v3.0</a>
+        </div>
         <div class="box">
             <div class="login">
                 <!--<h1>Please Login</h1>-->

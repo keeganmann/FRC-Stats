@@ -1,8 +1,10 @@
 <!--Included by index.php-->
 <?php
+//Secure this page
+require_once 'common.php';
+require_authentication();
 /*
  * Used for uploading robot pictures and survey responses.
- * TODO: rename to teaminfo.php and update required includes/links/form actins.
  */
 
 include("robotpics.php");

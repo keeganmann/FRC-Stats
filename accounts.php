@@ -36,7 +36,9 @@ class Accounts {
         return $out;
     }
     public function deleteAccount($username){
-        //TODO add a protection against deleting the root user.
+        if($username == 'root'){
+            return "ERROR: Cannot delete root user";
+        }
         $con = frcmysqlconnect();
         $query = "DELETE FROM Accounts WHERE username='$username'";
         $result = mysql_query($query);

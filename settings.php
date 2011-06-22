@@ -1,4 +1,9 @@
 <!--Included by index.php-->
+<?php
+//Secure this page
+require_once 'common.php';
+require_authentication();
+?>
 <p style="font-size: 10px">
     WARNING: The following operations modify the structure of the data stored in 
     the database. Removing a single parameter below will destroy all data

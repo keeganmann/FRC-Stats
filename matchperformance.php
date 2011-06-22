@@ -65,7 +65,13 @@ class MatchPerformance {
         return $this->table;
     }
     
-    //TODO add a "clearAllData()" method
+    public function clearAllData() {
+        //connect to database
+        $con = frcmysqlconnect();
+        //get match query
+        $result = mysql_query("DELETE FROM Performance WHERE 1");
+        mysql_close($con);
+    }
 
     public function getMatchTable() {
         return $this->table;

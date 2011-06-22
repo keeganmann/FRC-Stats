@@ -1,5 +1,9 @@
 <!--Included by index.php-->
-
+<?php
+//Secure this page
+require_once 'common.php';
+require_authentication();
+?>
 <p>
     Upcoming matches are listed below.
 </p>
