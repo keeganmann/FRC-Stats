@@ -21,19 +21,20 @@ session_unset();
             }
         </script>
         <style type="text/css">
-            body {
+            body.login {
                 font-family: Helvetica, sans-serif;
                 font-size: 14px;
                 text-align:center;
                 background-color: #b6b6b6;
-                background-image: url('pics/Swirls.jpg');
-                background-repeat:repeat;
+                background-image: url('pics/baloon.jpg');
+                background-repeat: no-repeat;
+                background-position: top;
                 color: #ffffff;
             }
         </style>
         <link rel="stylesheet" type="text/css" href="styles.css" />
     </head>
-    <body>
+    <body class="login">
         <h1>Login</h1>
         <form action="authenticate.php" method="post" >
             <div class="rounded">

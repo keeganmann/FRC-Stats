@@ -2,7 +2,7 @@
 
 <div class="rounded">
     <div class="padderline">
-        Team #: <input type="text" pattern="\d*" id="teamnumbertext"/>
+        Team #: <input type="text" id="teamnumbertext" pattern="\d*" onclick="this.value='';"/>
     </div>
     <div class="padder">
         Go: <input type="button" value="Go" class="button" onClick="searchstats();"/>

@@ -24,7 +24,8 @@ body {
     background-color: #333366;
     background-image: url('pics/Swirls.jpg');
     background-attachment: fixed;
-    background-repeat:repeat;
+    background-position: top;
+    background-repeat: repeat-y;
     color: #ffffff;
     padding: 10px;
     margin:0px;
@@ -128,7 +129,7 @@ select{
     color: #000000;
 }
 input.button{
-    width: auto;
+    /*width: auto;*/
     border: 2px outset #ffffff;
     -webkit-text-size-adjust: 100%;
 }
@@ -151,7 +152,6 @@ input.check{
 }
 #popUpDiv {
     position:absolute;
-    background-color:#000000;
     width:200px;
     height:auto;
     z-index: 9002;
@@ -164,4 +164,40 @@ input.check{
 }
 .floatright{
     float: right;
+    font-weight: normal;
+}
+img {
+    margin: 10px;
+}
+
+/*white version*/
+body.white{
+    /*background-image: url(pics/pinstripe.jpg);
+    background-repeat: repeat;*/
+}
+body.white div.rounded{
+    background-color: #ffffff;
+}
+body.white p, body.white div.rounded{
+    color: #333333;
+}
+body.white div.rounded a{
+    color: #0000ff;
+    text-shadow: none;
+}
+body.white div.rounded a:hover{
+    color: #ff0000;
+}
+body.white input{
+    background-color: #ffffff;
+    color: #000000;
+}
+body.white #popupdisabled{
+    color: #eeeeee;
+}
+body.white #popupcancel{
+    color: #cc3333;
+}
+body.white #popupstandard{
+    color: #3333cc;
 }

@@ -19,6 +19,14 @@ require_authentication();
             the process of alliance selection for the finals.  It can also be used to record 
             responses to surveys.
         </p>
+        <h2>Mobile Version Limitations</h2>
+        <p>
+            Currently, with this mobile version, it is only possible to view statistics.
+        </p>
+        <p>
+            I hope to soon implement the performance data entry form and the survey response entry form.
+            I am considering not implementing the match list entry and settings features off the mobile version.
+        </p>
         <h2>Code</h2>
         <p>
             The code for this project is now available through an SVN repository as part of the google code project here:

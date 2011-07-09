@@ -98,10 +98,29 @@ require_authentication();
                 var seconds = Math.floor(diff / 1000) - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
                 document.getElementById("clockspan").innerHTML = days + " days, " + hours + " hours, " + minutes + " minutes, and " + seconds + " seconds until " + event + "!";
             }
+            var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+            var ki = 0;
+            //   38
+            //37 40 39   A=65 B=66
+            function keyDownEvent(event){
+                if(event.keyCode == konami[ki]){
+                    if(ki == 9){
+                        //alert("done");
+                        document.location = "game.php";
+                    }
+                    else{
+                        ki++;
+                    }
+                }
+                else{
+                    ki = 0;
+                }
+                //document.getElementById("debugspan").innerHTML = "key:" + event.keyCode + " ki:" + ki;
+            }
         </script>
     </head>
 
-    <body onload="updateClock(); setInterval('updateClock()', 1000 )">
+    <body onload="updateClock(); setInterval('updateClock()', 1000 )" onkeydown="keyDownEvent(event)">
         <div class="header">  
             <div class="logout"><a href="login.php">logout</a></div>
             <span id="clockspan" style="margin-bottom: 0;padding-bottom: 0;color: #888888; font-size:10px;">Countdown</span>
@@ -123,6 +142,7 @@ require_authentication();
         </div>
 
         <div class="content">
+            <span id="debugspan"></span>
             <!--The following commented code would be used for a navigation sidebar-->
             <!--<div class="navleft">
             <div class="padder">
@@ -136,8 +156,11 @@ require_authentication();
                 <?php
                 if ($currentNav == "main") {
                     ?>
+                    <p border="1px">
+                        <strong>NEW: TRY THE <a href="http://en.wikipedia.org/wiki/Konami_code">KONAMI CODE</a>.</strong>
+                    </p>
                     <p>
-                        <strong>Logged in as <?php echo $_SESSION[username]; ?>.</strong>
+                        <em>Logged in as <?php echo $_SESSION[username]; ?>.</em>
                     </p>
                     <p>
                         This is a database of statistics for <a href="http://www.usfirst.org">FIRST Robotics Competition</a> teams.  
@@ -152,6 +175,10 @@ require_authentication();
                     <p>
                         The code for this project is now available through an SVN repository as part of the google code project here:
                         <a href="http://code.google.com/p/frcstats/">http://code.google.com/p/frcstats/</a>.
+                    </p>
+                    <h2>Mobile Version</h2>
+                    <p>
+                        I started a mobile version of the site <a href="/m">here</a>.  It has limited functionality.
                     </p>
                     <h2>Operation</h2>
                     <ul>
@@ -169,22 +196,9 @@ require_authentication();
                             system to future games is available under "Settings".</li>
                         <li>Accounts can now be managed under "Settings". </li>
                     </ul>
-                    <h2>Needed Features</h2>
-                    <p>Note: this list does not include various small fixes.  This is a list of major new features.</p>
-                    <ul>
-                        <li>?</li>
-                    </ul>
-                    <h2>These Features would be Nice</h2>
-                    <p>Note: this list does not include various small fixes.  This is a list of major new features.</p>
-                    <ul>
-                        <li>Time column in match lists. </li>
-                        <li>Would it be too difficult to log penalties for individual teams? </li>
-                        <li>A simple CMS.</li>
-                        <li>Logging of Penalty and Surrogate information for matches in order to determine real time standing.</li>
-                        <li>It might also be useful to log comments for individual matches in case we want to look back on 
-                            interesting ones.</li>
-                        <li>There is a twitter feed which sends out real time data on which matches are coming up. Synch with this?</li>
-                    </ul>
+                    <h2>Future Features</h2>
+                    <p>See: <a href="http://code.google.com/p/frcstats/issues/list">http://code.google.com/p/frcstats/issues/list</a></p>
+                    <p>Note: Small enhancements are also noted as TODO comments in the code.</p>
                     <h2>Further Questions</h2>
                     <p>Should we deploy this site to the same server as our nurdrobotics.com site, or should we deploy it on 
                         web server running on a small computer.  The advantage to using a server we can take to the competition

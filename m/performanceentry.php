@@ -1,14 +1,12 @@
 
-<form>
-    <div class="rounded">
-        <div class="padderline">
-            Match#: <input type="text"/>
-        </div>
-        <div class="padder">
-            Go: <input type="submit" value="Go" class="button"/>
-        </div>
+<div class="rounded">
+    <div class="padderline">
+        Match #: <input type="text" pattern="\d*" onclick="this.value='';"/>
     </div>
-</form>
+    <div class="padder">
+        Go: <input type="submit" value="Go" class="button"/>
+    </div>
+</div>
 <div class="rounded">
     <div class="padderline">
         Red Score: <input type="text"/>

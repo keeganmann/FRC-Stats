@@ -8,7 +8,7 @@ require_authentication();
 
 <html>
     <head>
-        <title>FRC STATS - Mobile Login</title>
+        <title>FRC STATS</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
 
@@ -35,6 +35,7 @@ require_authentication();
                 alert("scrolling");
                 window.scrollTo(0, 1);
             }
+            //inverts the visibility of the div with the given id
             function toggle(div_id) {
                 var el = document.getElementById(div_id);
                 if ( el.style.display == 'none' ) {
@@ -165,7 +166,7 @@ require_authentication();
             }
         </script>
     </head>
-    <body onload="updateNav('home.php');">
+    <body onload="updateNav('home.php');" class="white">
         <div class="navbar">
             <div style="float:left" class="navitem"> <a href="login.php">logout</a></div> 
             <div style="float:right" class="navitem"><a href="#" onclick="popup('popUpDiv')">menu</a></div>
@@ -178,17 +179,22 @@ require_authentication();
         </span>
         <div id="blanket" style="display:none;"></div>
         <div id="popUpDiv" class="rounded" style="display:none;">
-            <div class="padderline" onclick="                                  popup('popUpDiv');" style="text-align: center;color: #ffcccc">
-                Cancel
-            </div>
-            <div class="padderline" onclick="updateNav('home.php');            popup('popUpDiv');" style="text-align: center;color: #ffffff">
+            <div class="padderline" onclick="updateNav('home.php');            popup('popUpDiv');" style="text-align: center;">
                 Home
             </div>
-            <div class="padderline" onclick="updateNav('stats.php');           popup('popUpDiv');" style="text-align: center;color: #ffffff">
+            <div class="padderline" onclick="updateNav('stats.php');           popup('popUpDiv');" style="text-align: center;">
                 Team Stats
             </div>
-            <div class="padderline" onclick="updateNav('performanceentry.php');popup('popUpDiv');" style="text-align: center;color: #ffffff">
-                Performance (not functional)
+            <!--
+            <div class="padderline" onclick="updateNav('performanceentry.php');popup('popUpDiv');" style="text-align: center;" id="popupdisabled">
+                Performance [working]
+            </div>
+            -->
+            <div class="padderline" onclick="window.location='../';"                               style="text-align: center;" id="popupstandard">
+                Standard Version
+            </div>
+            <div class="padder"     onclick="                                  popup('popUpDiv');" style="text-align: center;" id="popupcancel">
+                Cancel
             </div>
             <!--<div class="padderline" onclick="updateNav('home.php');popup('popUpDiv');">
                 Match List
